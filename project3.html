@@ -29,21 +29,19 @@
 										<h3>Media company: Simulation</h3>
 										<p>Modeling editorial processes using random variables in Arena</p>
 									</header>
-									<p>An online publisher wanted to scale up guest content and planned to hire a new editor with the assumption that the new role would be able to scale content linearly. But being familiar with the editorial process, I saw a likelihood that content production wouldn't scale proportionally to increased manpower.. 
-									So in this project, the goal was to use Arena to 1) simulate the existing editorial workflow as a way to get some ground truth on the timing of certain processes and 
-									2) use that ground truth to model the workflow of a possible new editor and predict the number of articles they could generate per week.</p>
-									<p>I used 8-weeks of prior data on submissions and published stories to generate random variables in simulation program Arena. I also looked at the number of incoming emails queries and the number of stories reviewed but rejected.</p>
-									<p>Since there is a lot of variability in these numbers from week to week, I used a Triangular distribution for quite a few of the random variables. The rest I modeled as Normal. (While Poissons might seem like a more obvious choice, they didn't fit the problem for several reasons.)</p>
-									<p>You can see an overview of the full workflow below.<b>ADD IMAGE</b><\p>
-									<p>Modeling the new workflow was a bit trickier. The existing workflow depended on unsolicited submissions and queries, but the new editor would be tasked with soliciting the majority of their workload. This is why I expected that their productivity would not match that of the existing editor.
-									Since no data was available for the new workflow, I relied on my domain knowledge to set reasonable parameters. Since articles can take more than a week to go through the editorial cycle, I simulated 10 working days and divided the output in half to get reasonable output for a 5-day work week.</p>
+									<p><strong>Problem.</strong> An online publisher has a guest writer program, which takes a lot of editorial time to make possible. One editor was running the program, handling hundreds of emails and submissions sent to the guest-post inbox each week. The company wanted to scale up this program and wanted to know if hiring an additional editor would result in enough extra content to make the investment worthwhile.  Since the existing editor was already handling all unsolicited mail coming to the inbox, the new editor's role would be different: They would need to actively solicit new content. This would be a more time-consuming means of sourcing content, so the concern was that the editor's time cost might outweigh the value they would be able to generate.</p>
 
+									<p><strong>Data modeling approach. </strong>I chose to answer the question through a simulating the processes in Arena. Specifically, I built 2 models:</p>
+									<ol>
+										<li>A model of the existing editorial workflow, which I adjusted until it represented the actual productivity and work times of the existing editor. The would provide some ground truth on the timing of various editorial processes.</li>
+										<li>A model of the proposed new workflow for the additional editor. The distributions and parameters used in this model leveraged the learnings from the first model to predict the number of articles the new editor would likely be able to generate per week.</li>
+									</ol>
+									<p>I used 8-weeks of prior data on submissions and published stories -- in addition to my own familiarity with the process -- to generate the random variables.</p>
 
-									<div class="image" data-position="left">
-										<img src="images/arena.jpg" alt="" />
-										</div>
-									<p>Faucibus sed lobortis aliquam lorem blandit.<p>Faucibus sed lobortis aliquam lorem blandit.<p>Faucibus sed lobortis aliquam lorem blandit.<p>Faucibus sed lobortis aliquam lorem blandit.</p>
-								</div>
+									<p>The 3-minute video below provides a quick overview of the two models:</p>
+									<iframe width="560" height="315" src="//www.youtube.com/embed/E5dUpgATsh4" frameborder="0" allowfullscreen></iframe>
+
+									<p><strong>Results.</strong> The simulation estimated that, if the company hired the new editor, they would be able to produce 20.8 publishable stories a week. This was 15% more output than the existing editor was producing (approx. 18 stories a week). This outcome gave the executive team confidence that a new hire would indeed be a profitable move. And the additional editor was, in fact, hired.</p>								</div>
 								</div>
 							</section>
 
