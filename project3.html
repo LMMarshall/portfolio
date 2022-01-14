@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>LMMarshall portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+	
+			<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="images/pic01.jpg" alt="" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h3>Media company: Simulation</h3>
+										<p>Modeling editorial processes using random variables in Arena</p>
+									</header>
+									<p>An online publisher wanted to scale up guest content and planned to hire a new editor with the assumption that the new role would be able to scale content linearly. But being familiar with the editorial process, I saw a likelihood that content production wouldn't scale proportionally to increased manpower.. 
+									So in this project, the goal was to use Arena to 1) simulate the existing editorial workflow as a way to get some ground truth on the timing of certain processes and 
+									2) use that ground truth to model the workflow of a possible new editor and predict the number of articles they could generate per week.</p>
+									<p>I used 8-weeks of prior data on submissions and published stories to generate random variables in simulation program Arena. I also looked at the number of incoming emails queries and the number of stories reviewed but rejected.</p>
+									<p>Since there is a lot of variability in these numbers from week to week, I used a Triangular distribution for quite a few of the random variables. The rest I modeled as Normal. (While Poissons might seem like a more obvious choice, they didn't fit the problem for several reasons.)</p>
+									<p>You can see an overview of the full workflow below.<b>ADD IMAGE</b><\p>
+									<p>Modeling the new workflow was a bit trickier. The existing workflow depended on unsolicited submissions and queries, but the new editor would be tasked with soliciting the majority of their workload. This is why I expected that their productivity would not match that of the existing editor.
+									Since no data was available for the new workflow, I relied on my domain knowledge to set reasonable parameters. Since articles can take more than a week to go through the editorial cycle, I simulated 10 working days and divided the output in half to get reasonable output for a 5-day work week.</p>
+
+
+									<div class="image" data-position="left">
+										<img src="images/arena.jpg" alt="" />
+										</div>
+									<p>Faucibus sed lobortis aliquam lorem blandit.<p>Faucibus sed lobortis aliquam lorem blandit.<p>Faucibus sed lobortis aliquam lorem blandit.<p>Faucibus sed lobortis aliquam lorem blandit.</p>
+								</div>
+								</div>
+							</section>
+
+					</div>
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>					
+						
+
+						
