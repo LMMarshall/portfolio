@@ -51,14 +51,14 @@
 										<h3>Seattle Police: Time-series forecasting</h3>
 										<p>A big data project using PySpark with Google Cloud, OpenRefine for data cleaning, extensive feature engineering, ARIMA forecasting</p>
 									</header>
-									<p></b>Objective.</b> The Seattle Police Department faced substantial challenges in managing its policing resources in 2020 when it was one of the first (and hardest-hit) U.S. cities to face COVID-19 and shortly afterwards was hit by mass Black Lives Matter protests, which led to the forced shutdown of East Precinct station and calls to defund the police.</p>
+									<p><b>Objective.</b> The Seattle Police Department faced substantial challenges in managing its policing resources in 2020 when it was one of the first (and hardest-hit) U.S. cities to face COVID-19 and shortly afterwards was hit by mass Black Lives Matter protests, which led to the forced shutdown of East Precinct station and calls to defund the police.</p>
 									<p>The goal of this project was to use police call data from the City of Seattle's Open Data project to:</p>
 									<ol>
 										<li>Build a machine-learning model that would predict 2020 police call acitivity based on 10 years of historical data. This would provide a baseline by which to measure the impact of COVID and the protest.</li>
 										<li>Compare that expected outcome with the actual police call activity for 2020 to gauge the impact of these events on police resource utilization.</li>
 										<li>Construct a tool that would allow police and public users to interact with this data and easily view the impacts at various levels of granularity.</li>
 									</ol>
-									<p>Summary of my approach:</p>
+									<p><b>Approach details:</b></p>
 									<ul>
 										<li><strong>4.3 million rows</strong> of police call data with 11 features</li>
 										<li>Used <strong>OpenRefine</strong> to fix tagging inconsistencies in the data and aggregate similar categories</li>
@@ -73,7 +73,7 @@
 									</div>
 									Above: Simple feature descriptions for users preserve critical context.
 
-									<p>The resulting tool, demoed in the 6-minute video below, surfaced a number of interesting insights that could help inform police resource planning during times of social upheaval. For example:</p>
+									<p>The resulting tool surfaced a number of interesting insights that could help inform police resource planning during times of social upheaval. For example:</p>
 									<ul>
 										<li>The proportion of calls resulting in no police action surged from Jan to Aug by 35%, potentially costing time and resources that could have been allocated elsewhere</li>
 										<li>Average police response time increased by 87% to from Jan to Aug, 2020</li>
@@ -81,11 +81,13 @@
 									began). During the same period, total police action declined by almost 10%.</li>
 										<li>The ratio of public calls for help to police-initiated calls increased by 257% between Jan and Aug 2020 just as calls poured in to defund the police. The East precinct saw a much steeper increase of 482%.</li>
 									</ul>
-									<iframe width="560" height="315" src="//www.youtube.com/embed/HJyP0BkOP10" frameborder="0" allowfullscreen></iframe>
 									
 									<header class="major">
 										<p>[<a href="https://github.com/LMMarshall/seattle_Police">See the GitHub repo.</a>]</p>
 									</header>
+									
+									<p>My features and ARIMA models were used to power an interactive visualization tool. A 6-minute demo video of that tool follows below.</p>
+									<iframe width="560" height="315" src="//www.youtube.com/embed/HJyP0BkOP10" frameborder="0" allowfullscreen></iframe>
 									
 								</div>
 							</section>
