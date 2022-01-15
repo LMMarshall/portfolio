@@ -57,22 +57,25 @@
 										<li>Build a machine-learning model that would predict 2020 police call acitivity based on 10 years of historical data. This would provide a baseline by which to measure the impact of COVID and the protest.</li>
 										<li>Compare that expected outcome with the actual police call activity for 2020 to gauge the impact of these events on policing behaviors and police resource utilization.</li>
 									</ol>
-									<p><b>Approach details:</b></p>
+									<p><b>Approach details.</b> These are the elements that went into the project:
 									<ul>
 										<li><strong>4.3 million rows</strong> of police call data with 11 features</li>
-										<li>Used <strong>OpenRefine</strong> to fix tagging inconsistencies in the data and aggregate similar categories</li>
-										<li>Used <strong>Google Cloud + PySpark</strong> for feature engineering, cleaning, and aggretating data</li>
-										<li>Used <strong>Python Jupyter notebook</strong> for final cleaning</li>
-										<li>Built 45 seasonal <strong>ARIMA models</strong> to support forecasting (9 features X 5 precincts) and used ADF test for stationarity</li>
-										<li>Wrote accessible <strong>feature descriptions for users</strong> to provide critical context on how each feature had been built from the underlying data.</li>
+										<li><strong>OpenRefine</strong>, for fixing naming inconsistencies in the data and aggregating similar categories</li>
+										<li><strong>Google Cloud + PySpark</strong> for feature engineering, cleaning, and aggretating data</li>
+										<li><strong>Python Jupyter notebook</strong> for final cleaning</li>
+										<li>45 seasonal <strong>ARIMA models</strong> to support forecasting (9 features X 5 precincts) and used ADF test for stationarity</li>
+										<li>Creation of accessible <strong>feature descriptions for users</strong> to provide critical context on how each feature had been built from the underlying data.</li>
 									</ul>
+									
+									<header class="major">
+										<p>[<a href="https://github.com/LMMarshall/seattle_Police">See the GitHub repo.</a>]</p>
+									</header>
 									
 										<img src="images/minidocumentation_seattle.jpg"/> 
 									<p>Above: Simple feature descriptions for users preserve critical context.</p>
 									
 								<p> </p>
-									<p><b>Results:</b><p>
-									<p>The resulting tool surfaced a number of interesting insights that could help inform police resource planning during times of social upheaval. For example:</p>
+									<p><b>Results.</b> The resulting tool surfaced a number of interesting insights that could help inform police resource planning during times of social upheaval. For example:</p>
 									<ul>
 										<li>The proportion of calls resulting in no police action surged from Jan to Aug by 35%, potentially costing time and resources that could have been allocated elsewhere</li>
 										<li>Average police response time increased by 87% to from Jan to Aug, 2020</li>
@@ -80,10 +83,6 @@
 									began). During the same period, total police action declined by almost 10%.</li>
 										<li>The ratio of public calls for help to police-initiated calls increased by 257% between Jan and Aug 2020 just as calls poured in to defund the police. The East precinct saw a much steeper increase of 482%.</li>
 									</ul>
-									
-									<header class="major">
-										<p>[<a href="https://github.com/LMMarshall/seattle_Police">See the GitHub repo.</a>]</p>
-									</header>
 									
 									<p>My features and ARIMA models were used to power an interactive visualization tool. A 6-minute demo video of that tool follows below.</p>
 									<iframe width="560" height="315" src="//www.youtube.com/embed/HJyP0BkOP10" frameborder="0" allowfullscreen></iframe>
