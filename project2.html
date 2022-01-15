@@ -29,7 +29,37 @@
 										<h3>Seattle Police: Anomaly detection</h3>
 										<p>A big data project using PySpark with Google Cloud, OpenRefine for data cleaning, extensive feature engineering, ARIMA forecasting</p>
 									</header>
-									<p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
+									<p></b>Objective.</b> The Seattle Police Department faced substantial challenges in managing its policing resources in 2020 when it was one of the first (and hardest-hit) U.S. cities to face COVID-19 and shortly afterwards was hit by mass Black Lives Matter protests, which led to the forced shutdown of East Precinct station and calls to defund the police.</p>
+									<p>The goal of this project was to use police call data from the City of Seattle's Open Data project to:</p>
+									<ol>
+										<li>Build a machine-learning model that would predict 2020 police call acitivity based on 10 years of historical data. This would provide a baseline by which to measure the impact of COVID and the protest.</li>
+										<li>Compare that expected outcome with the actual police call activity for 2020 to gauge the impact of these events on police resource utilization.</li>
+										<li>Construct a tool that would allow police and public users to interact with this data and easily view the impacts at various levels of granularity.</li>
+									</ol>
+									<p>Summary of my approach:</p>
+									<ul>
+										<li><strong>4.3 million rows</strong> of police call data with 11 features</li>
+										<li>Used <strong>OpenRefine</strong> to fix tagging inconsistencies in the data and aggregate similar categories</li>
+										<li>Used <strong>Google Cloud + PySpark</strong> for feature engineering, cleaning, and aggretating data</li>
+										<li>Used <strong>Python Jupyter notebook</strong> for final cleaning</li>
+										<li>Built 45 seasonal <strong>ARIMA models</strong> to support forecasting (9 features X 5 precincts) and used ADF test for stationarity</li>
+										<li>Wrote accessible <strong>feature descriptions for users</strong> to provide critical context on how each feature had been built from the underlying data.</li>
+									</ul>
+									&nbsp;
+
+									[caption id="attachment_2546011" align="alignnone" width="300"]<img class="wp-image-2546011 size-medium" src="https://venturebeat.com/wp-content/uploads/2019/11/ai-human-in-the-loop.jpg?w=300" alt="ai human in the loop" width="300" height="150" /> Simple feature descriptions for users preserve critical context.[/caption]
+
+									<p>The resulting tool, demoed in the 6-minute video below, surfaced a number of interesting insights that could help inform police resource planning during times of social upheaval. For example:</p>
+									<ul>
+										<li>The proportion of calls resulting in no police action surged from Jan to Aug by 35%, potentially costing time and resources that could have been allocated elsewhere</li>
+										<li>Average police response time increased by 87% to from Jan to Aug, 2020</li>
+										<li>Arrest numbers across the city dropped by 21% from Jan to April, 2020 (the initial months of COVID-19 before the BLM protests
+									began). During the same period, total police action declined by almost 10%.</li>
+										<li>The ratio of public calls for help to police-initiated calls increased by 257% between Jan and Aug 2020 just as calls poured in to defund the police. The East precinct saw a much steeper increase of 482%.</li>
+									</ul>
+									<p><iframe width="560" height="315" src="//www.youtube.com/watch?v=HJyP0BkOP10" frameborder="0" allowfullscreen></iframe></p>
+
+									<p><a href="#">See the GitHub repo.</a></p>
 								</div>
 							</section>
 
