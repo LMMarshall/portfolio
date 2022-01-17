@@ -70,7 +70,7 @@
 									<p>Ultimately, I selected 6 good performers and built an ensemble out of them to leverage the strengths of each of them. To do this, I used an ensemble-building tool called LSCP, which works by weighting each algorithm's output based on its correlation to a local pseudo ground truth for each local region of a test instance.</p>
 
 									<p>My six detectors were: Isolation Forest, One-Class SVM, Copula Based Outlier Detector (COPOD), Rotation-based Outlier Detector (ROD), K-Neareast Neighbors (KNN), and a Tensorflow-based neural network called Auto Encoder.</p>
-
+	
 									<p>Of the outliers detected, I then honed in on just those hosts who earned enough that it could be a concern if they were cheating. To do this, I set a minimum threshold for the total average monthly pay of 20 tokens or 10 tokens if the candidate had at least one other associated account that also showed earnings. With this filter in place, I identified 65 candidates of interest.</p>
 
 									<p><strong>Results.</strong> In addition to identifying those 65 candidates for further examination by the company, I noted some characteristics among certain of those candidates that were worth highlighting:</p>
@@ -89,7 +89,7 @@
 										<li>The company's payment policy made it impossible to track monthly earnings. The policy is to pay a host only if that host's earnings exceed a certain threshold for the month; otherwise, payment is held until the next month. Since monthly earnings are not recorded, only payments, it's not possible to compare earnings with actual activity on the account. The pattern of no monthly payment followed by a big surge is especially evident in the plot below, where Dec and Jan show unexpectedly low payment levels and February shows a surge.</li>
 										<li>The recorded storage ‘piece counts’ for each node are not regularly updated, yet accurate counts are essential to detecting whether the associated payments are within reasonable range for the number of pieces stored.</li>
 									</ul>
-										<img src='images/surge_anomalies'>
+										<img src='images/surge_anomalies.jpg'>
 										<header class="major">
 										<p>[<a href="https://github.com/LMMarshall/anomalies">See the GitHub repo.</a>]</p>
 									</header>									
