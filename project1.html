@@ -59,9 +59,9 @@
 
 									<p><strong>Approach.</strong> My goal was to surface as many behavioral features as possible from the host-account data and to then identify unusual behavior using a clustering algorithm built for anomaly detection. To engineer those features, I pulled data from several sources:</p>
 									<ul>
-										<li>15 CSV files across 3 global regions</li>
+										<li>21 CSV files across 3 global regions</li>
 										<li>Zksync wallet data (via a public API: Zkscan) for hosts receiving their service payments to a Zksync wallet</li>
-										<li>Ethereum transaction histories for each of the 5,700+ hosts (via a public API: Etherscan)</li>
+										<li>Ethereum transaction histories for each of the 5,300+ hosts (via a public API: Etherscan)</li>
 									</ul>
 									<p>After extensive manipulation and aggregation of this data in Python notebooks, I was able to extract 51 features (such as number of nodes hosted, maximum data ‘pieces’ stored, number of blockchain wallets owned, number of unique email addresses used, etc.). I ultimately selected 17 of these for my cluster analysis.</p>
 
@@ -82,13 +82,18 @@
 									</ul>
 									<p><strong>Data concerns.</strong> Perhaps more important than the findings noted above were a number of problematic data practices I identified during my iterative interviews with the company over the course of the project. I flagged these as areas where the company could improve its ability to discourage and/or detect cheating in the future:</p>
 									<ul>
+										<li>There were 61 cases where free-tier users had breached their free-tier limits without detection or repurcussion.</li>
 										<li>Several users accounts still showed upload activity even after they had been banned from the service.</li>
 										<li>Several nodes were still showing activity after they were marked as having exited the service.</li>
 										<li>There were duplicate file-download bandwidth entries (same timeslot and same project id) with different amounts, despite the company’s statement that such duplicates should not exist.</li>
-										<li>The company's payment policy made it impossible to track monthly earnings. The policy is to pay a host only if that host's earnings exceed a certain threshold for the month; otherwise, payment is held until the next month. Since monthly earnings are not recorded, only payments, it's not possible to compare earnings with actual activity on the account. (The pattern of no monthly payment followed by a big surge was caught by my algorithm.)</li>
+										<li>The company's payment policy made it impossible to track monthly earnings. The policy is to pay a host only if that host's earnings exceed a certain threshold for the month; otherwise, payment is held until the next month. Since monthly earnings are not recorded, only payments, it's not possible to compare earnings with actual activity on the account. The pattern of no monthly payment followed by a big surge is especially evident in the plot below, where Dec and Jan show unexpectedly low payment levels and February shows a surge.</li>
 										<li>The recorded storage ‘piece counts’ for each node are not regularly updated, yet accurate counts are essential to detecting whether the associated payments are within reasonable range for the number of pieces stored.</li>
-										<li>There were 61 cases where free-tier users had breached their free-tier limits without detection or repurcussion.</li>
-									</ul>								</div>
+									</ul>
+										<img src='images/surge_anomalies'>
+										<header class="major">
+										<p>[<a href="https://github.com/LMMarshall/anomalies">See the GitHub repo.</a>]</p>
+									</header>									
+									</div>
 								</div>
 							</section>
 
