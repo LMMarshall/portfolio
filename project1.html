@@ -49,49 +49,51 @@
 								<div class="container">
 									<header class="major">
 										<h3>Peer-to-peer storage: Anomaly detection</h3>
-										<p>A project involving APIs, understanding blockchain concepts, extensive feature engineering, data quality issues, unsupervised machine learning, and research and application of clustering algorithms.</p>
+										<p>A project involving APIs, understanding blockchain concepts, extensive feature engineering, data quality issues, unsupervised machine learning, and research and application of outlier-detection algorithms.</p>
 									</header>
-									<p>I collaborated with a global peer-to-peer storage service for a short-term project to investigate possible manipulation of their service by users. The service runs on the Ethereum blockchain. People anywhere in the world can host storage ‘nodes’ for the service, and the company pays those hosts for amount of activity (downloads) occuring at those nodes. The company had been tipped off that some of those hosts might be gaming the system by storing data on their own nodes and then executing large amounts of downloads in order to inflate their earnings. They could do this by registering a large number of fake free-tier user accounts to mask the association between their legitimate host account and the accounts used to generate the downloads. They would then need to use bots to seek out their own nodes on the network (by uploading data repeatedly to the service until they managed to hit one of their own nodes through trial and error).</p>
+									<p>I collaborated with a global peer-to-peer storage service for a project to investigate possible manipulation of their service by users. The service runs on the Ethereum blockchain. People anywhere in the world can host storage ‘nodes’ for the service, and the company pays those hosts based on the amount of activity (downloads) occuring at those nodes. The company had been tipped off that some of those hosts might be gaming the system by storing data on their own nodes and then executing large amounts of downloads in order to inflate their earnings. They could do this by registering a large number of fake free-tier user accounts to mask the association between their legitimate host account and the accounts used to generate the downloads. They would then need to use bots to seek out their own nodes on the network (by uploading data repeatedly to the service until they managed to hit one of their own nodes through trial and error).</p>
 
-									<p><strong>Objective.</strong> Search for any evidence of the possible cheating.</p>
+									<p><strong>Objective.</strong> Search for any evidence of possible cheating.</p>
 
 									<p><strong>Limited view.</strong> As it's only possible to cheat if you're a free-tier user, I wanted to look at these user accounts (as well as the host accounts). These accounts were only identifiable via their bandwidth and storage limits (free-tier users have a 50GB limit on each). However, on interviewing the company, I learned that those limits had only been put in place 2 months prior the project’s start, with no way to track free-tier users prior to that. With that limited view, I had little prospect for tracking cheating from the user-account end of the equation. Instead, I would have to focus exclusively on the host-account data.</p>
 
-									<p><strong>Approach.</strong> My goal was to surface as many behavioral features as possible from the host-account data and to then identify unusual behavior using a clustering algorithm built for anomaly detection. To engineer those features, I pulled data from several sources:</p>
+									<p><strong>Approach.</strong> My goal was to surface as many behavioral features as possible from the host-account data and to then identify unusual behavior using an algorithm built for anomaly detection. To engineer those features, I pulled data from several sources:</p>
 									<ul>
-										<li>21 CSV files across 3 global regions</li>
+										 <li>21 CSV files across 3 global regions</li>
 										<li>Zksync wallet data (via a public API: Zkscan) for hosts receiving their service payments to a Zksync wallet</li>
 										<li>Ethereum transaction histories for each of the 5,300+ hosts (via a public API: Etherscan)</li>
 									</ul>
-									<p>After extensive manipulation and aggregation of this data in Python notebooks, I was able to extract 51 features (such as number of nodes hosted, maximum data ‘pieces’ stored, number of blockchain wallets owned, number of unique email addresses used, etc.). I ultimately selected 17 of these for my cluster analysis.</p>
+									<p>After extensive manipulation and aggregation of this data in Python notebooks, I was able to extract 51 features (such as number of nodes hosted, maximum data ‘pieces’ stored, number of blockchain wallets owned, number of unique email addresses used, etc.). I selected 17 of these for my outlier analysis.</p>
 
-									<p><strong>Clustering. </strong>I explored a number of algorithms designed for unsupervised outlier detection from the PyOD package as well from Scikit-Learn. Some performed poorly by either classifying too many candidates (DBSCAN) or too few (LOF, Stochastic Outlier Selection). Among those that identified a reasonable number of outliers (which I expected to be &lt;5%), the results conflicted with each other, making it difficult to select a best performer.</p>
+									<p><strong>Outlier detection. </strong>I explored a number of algorithms designed for unsupervised outlier detection from the PyOD package as well from Scikit-Learn. Some performed poorly by either classifying too many candidates (DBSCAN) or too few (LOF, Stochastic Outlier Selection). Among those that identified a reasonable number of outliers (which I expected to be &lt;5%), the results conflicted with each other, making it difficult to select a best performer.</p>
 
-									<p>Ultimately, I selected 6 good performers and built an ensemble out of them to leverage the strengths of each of them. To do this, I used an ensemble-building tool called LSCP, which works by weighting each algorithm's output based on its correlation to a local pseudo ground truth for each local region of a test instance.</p>
+									<p>Ultimately, I selected 6 good performers and built an ensemble out of them to leverage each of their strengths. To do this, I used an ensemble-building tool called LSCP, which works by weighting each algorithm's output based on its correlation to the pseudo ground truth for each randomly selected subspace of the dataset.</p>
 
 									<p>My six detectors were: Isolation Forest, One-Class SVM, Copula Based Outlier Detector (COPOD), Rotation-based Outlier Detector (ROD), K-Neareast Neighbors (KNN), and a Tensorflow-based neural network called Auto Encoder.</p>
 	
-									<p>Of the outliers detected, I then honed in on just those hosts who earned enough that it could be a concern if they were cheating. To do this, I set a minimum threshold for the total average monthly pay of 20 tokens or 10 tokens if the candidate had at least one other associated account that also showed earnings. With this filter in place, I identified 65 candidates of interest.</p>
+									<p>Of the outliers detected, I then honed in on just those hosts who earned enough that it could be a concern if they were cheating. To do this, I set a minimum threshold for the total average monthly pay of 20 tokens, or 10 tokens if the candidate had at least one other associated account that also showed earnings. With this filter in place, I identified 65 candidates of interest.</p>
 
+									<p>[<a href="https://github.com/LMMarshall/anomalies">See the GitHub repo.</a>]</p>
+									
 									<p><strong>Results.</strong> In addition to identifying those 65 candidates for further examination by the company, I noted some characteristics among certain of those candidates that were worth highlighting:</p>
 									<ul>
 										<li>Several of the candidates had significantly above-average earnings.</li>
 										<li>Several others had a large number of unique email addresses registered with the service (&gt;28) as well as a high number of Ethereum transactions. Furthermore, the company’s token was the only Ethereum token they traded in.</li>
-										<li>One candidate had sent or received Ethereum tokens to 7 other hosts on the service, 3 of which it shared an email address with.</li>
+										<li>One candidate had sent or received Ethereum tokens to 7 other hosts on the service, 3 of whom it shared an email address with.</li>
 										<li>One candidate had 116 different email addresses registered with the service.</li>
 									</ul>
-									<p><strong>Data concerns.</strong> Perhaps more important than the findings noted above were a number of problematic data practices I identified during my iterative interviews with the company over the course of the project. I flagged these as areas where the company could improve its ability to discourage and/or detect cheating in the future:</p>
+									<p><strong>Data concerns.</strong> Perhaps more important than the findings noted above were a number of problematic data practices I identified during my iterative interviews with the company over the course of the project. I flagged these as areas where the company could improve its ability to detect and discourage cheating in the future:</p>
 									<ul>
 										<li>There were 61 cases where free-tier users had breached their free-tier limits without detection or repurcussion.</li>
 										<li>Several users accounts still showed upload activity even after they had been banned from the service.</li>
 										<li>Several nodes were still showing activity after they were marked as having exited the service.</li>
 										<li>There were duplicate file-download bandwidth entries (same timeslot and same project id) with different amounts, despite the company’s statement that such duplicates should not exist.</li>
-										<li>The company's payment policy made it impossible to track monthly earnings. The policy is to pay a host only if that host's earnings exceed a certain threshold for the month; otherwise, payment is held until the next month. Since monthly earnings are not recorded, only payments, it's not possible to compare earnings with actual activity on the account. The pattern of no monthly payment followed by a big surge is especially evident in the plot below, where Dec and Jan show unexpectedly low payment levels and February shows a surge.</li>
+										<li>The company's payment policy made it impossible to track monthly earnings. The policy is to pay a host only if that host's earnings exceed a certain threshold for the month; otherwise, payment is held until the next month. Since monthly earnings are not recorded, only payments, it's not possible to compare earnings with actual activity on the account. The pattern of no monthly payment followed by a big surge is especially evident in the plot below, where December and January show unexpectedly low payment levels and February shows a surge.</li>
 										<li>The recorded storage ‘piece counts’ for each node are not regularly updated, yet accurate counts are essential to detecting whether the associated payments are within reasonable range for the number of pieces stored.</li>
 									</ul>
 										<img src='images/surge_anomalies.jpg'>
 										<header class="major">
-										<p>[<a href="https://github.com/LMMarshall/anomalies">See the GitHub repo.</a>]</p>
+										
 									</header>									
 									</div>
 								</div>
