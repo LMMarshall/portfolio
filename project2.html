@@ -57,13 +57,15 @@
 										<li>Build a machine-learning model that would predict 2020 police call acitivity based on 10 years of historical data. This would provide a baseline by which to measure the impacts of COVID-19 and the protests.</li>
 										<li>Compare that expected outcome with the actual police call activity for 2020 to gauge the impact of these events on policing behaviors and police resource utilization.</li>
 									</ol>
-									<p><b>Approach.</b> The initial dataset was 4.3 million rows of police call data with 11 features. Several of these features were categorical, with inconsistent labelling. I also needed to perform quite a bit of data manipulation and aggregation to build key features (such as response times and volume of calls). I then built separate ARIMA models for each of the key features to generate expected values and confidence intervals. All of this was fed into an interactive tool built by 2 JavaScript programmers, who I coordinated with on design. And to ensure that important context about the data wasn't lost due to aggregations, I wrote brief descriptions of each of the features to go with the tool. In short, the key elements of my approach were as follows:</p>
+									<p><b>Approach.</b> The key elements of the project were as follows:</p>
 									<ul>
+										<li><strong>4.3 million rows</strong> of police call data</li>
 										<li><strong>OpenRefine</strong>, for fixing naming inconsistencies in the data and aggregating similar categories</li>
 										<li><strong>Google Cloud + PySpark</strong> for feature engineering, cleaning, and aggretating data</li>
 										<li><strong>Python</strong> notebook for final cleaning</li>
 										<li>45 seasonal <strong>ARIMA models</strong> to support forecasting (9 features X 5 precincts) and used ADF test for stationarity</li>
-										<li>Creation of accessible <strong>feature descriptions for users</strong> to provide critical context on how each feature had been built from the underlying data.</li>
+										<li>Coordination with JavaScript programmers to design an interactive tool powered by my data and models
+										<li>Creation of easy-to-follow <strong>feature descriptions</strong> to give users of the tool context on how each feature had been built from the underlying data.</li>
 									</ul>
 										<img src="images/minidocumentation_seattle.jpg"/> 
 									<p>Above: Simple feature descriptions to preserve critical context for people using the tool.</p>
