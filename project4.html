@@ -51,14 +51,23 @@
 										<h3>Public Health England: Regression</h3>
 										<p>Finding the best regression approach for predicting cancer deaths in UK communities.</p>
 									</header>
-									<p><p><strong>Objective.</strong> Using public health data from across England, see if deaths from cancer in a region can be somewhat accurately predicted using a variety of health and environmental markers.</p>
+									<p><p><strong>Objective.</strong> Using public health data from across England, see if deaths from cancer in a local authority area can be somewhat accurately predicted using a variety of health and community markers.</p>
 
-									<p><strong>Approach.</strong> I accessed Public Health England's 'Fingertips' dataset via its API (using the custom Python library fingertips_py) and selected 45 health and environmental markers across 299 regions of the country. The markers included indicators of noise level, indoor air quality, education level, pollution, rates of obesity and sexually-transmitted diseases, etc. My goal was two-fold:</p>
+									<p><strong>Approach.</strong> I accessed Public Health England's 'Fingertips' dataset via its API (using the custom Python library fingertips_py) and selected 45 health and environmental markers across 299 regions of the country. The markers included rates of noise level, indoor air quality, education achievement, pollution, obesity, sexually-transmitted diseases, and more. My goal was two-fold:</p>
 									<ol>
-										<li>To determine if it is indeed possible to predict terminal cancer rates with some accuracy based on these kinds of community characteristics.</li>
-										<li>To identify any specific features that have strong explanatory power and may thus be explored as potential contributing factors to cancer deaths.</li>
+										<li>To determine if it is indeed possible to predict rates of cancer deaths with some accuracy based on these kinds of community markers.</li>
+										<li>To identify any specific features that have strong explanatory power and may thus be explored as potential contributing factors to cancer deaths -- or at least to environments that result in higher cancer deaths.</li>
 									</ol>
-									<p>I used several different approaches: linear regression, Elastic Net, and LASSO to hone in key features, as well as a decision tree to understand the explanatory power of those features; and then AdaBoost and PCA to build a model with more predictive strength.</p>
+									
+									
+									<p><strong>Process.</strong> I used transformations and a variety of different models. Specifically:
+									<ul><li>Used a postcode API to impute missing values by geographic region rather than nationwide average.</li>
+									<li>Used PowerTransformer to reduce skew and scale features.</li>
+									<li>Ran a number of models to find the strongest predictor: linear regression, LASSO, Ridge regression, Elastic Net, Poisson regression, XGBoost, Random Forest, and TensorFlow neural network. Also used PCA.</li><li>Separately, used LASSO, a simple decision tree, and linear regression plots to hone in on features with the clearest explanatory power.</li></ul>
+									<header class="major">
+										<p><a href="https://github.com/LMMarshall/cancer_community_markers">[See the GitHub repo.]</a></p>
+									</header>
+									<p><strong>Results.</strong> The best-performing model, a Random Forest model run on a subset of features and using PCA, was able to account for 47% of the variation in cancer death rates across regions, making it a useful predictor.<\p><p>The features that showed the most explanatory power were cardiovascular death rates, respiratory death rates, and rates of mental disorders. Rates of high educational attainment and hospitalisation for alcohol-related problems also ranked high.</p>
 
 									<p>[More information still to come.]</p></p>
 								</div>
