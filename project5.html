@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>LMMarshall portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+	<!-- Header -->
+			<section id="header">
+				<header>
+				<h1 id="logo"><a href="https://lmmarshall.github.io/portfolio">Morwenna Marshall</a></h1>
+					<p>Project portfolio</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="https://lmmarshall.github.io/portfolio/#one" class="active">About</a></li>
+						<li><a href="https://lmmarshall.github.io/portfolio/#two">Skill Set</a></li>
+						<li><a href="https://lmmarshall.github.io/portfolio/#three">Projects</a></li>
+						<li><a href="https://lmmarshall.github.io/portfolio/#four">Contact</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/morwenna-marshall/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/LMMarshall/" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:morwennamarshall@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+	
+			<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="images/vectorstore.jpg" alt="" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h3>LLM Chatbot</h3>
+										<p> A project involving PDF, image, video, Word, CSV, XML, and json sources, Azure OpenAI LLMs, Langchain, Azure Document Intelligence and Azure AI Search.</p>
+									</header>
+									<p>To enable clients to ask questions and get help while using our client platform, I built a Python chatbot application that can return not just a text answer but also related images, videos, and PDFs. The application relies on Azure AI Search-based vectorstores, uses routing and reranking for speed and accuracy, and has a hallucination filter built in. </p>
+
+									<p><strong>Objective.</strong> Improve client experience on our platform with an intelligent bot.</p> 
+									<p><strong>Approach.</strong> The first iteration of this project was built with Langchain and used a single LLM agent with chain-of-thought reasoning and multiple FAISS vectorstores. It worked relatively well, but the response times were too slow to use in production. For the next iteration, I used a routing function to identify the type of question and route the query to a specialized function. I used a separate LLM 'agent' for each specialized function and, rather than using Chain of Thought, my architecture ensured that each LLM call consisted of only a single simple request. I also added a Cohere reranker and a hallucination checker. The result was a fast, accurate chatbot.</p>
+									
+									<ul>
+										 <li>Screens incoming queries for abuse and prompt attacks</li>
+										 <li>Handles greetings, standard questions, follow-ups, multi-hop questions, and out-of-scope questions</li>
+										<li>Routes queries to specialized functions</li>
+										<li>Retrieves source materials from AI Search vectorstores</li>
+										<li>Reranks retrieved documents with Cohere reranker</li>
+										<li>Checks bot response against source documents to check for hallucinations</li>
+										<li>Returns sources -- along with images and videos -- alongside the text answer</li>
+										<li>RAG data is intelligently chunked to retain full context from original source (unlike standard chunking functions)</li>
+										<li>Includes a reusable Python custom-coded chatbot class so that the base code can be used across the organization for other chatbots.</li>
+									</ul>
+									<p></p>
+
+									<p><strong>Key takeaways. </strong>The most important value-adds were to move away from Langchain, rely on the LLM for many simple requests rather than one long request, use a rephrasing step, use a reranker, use a hallucination-checking step, and write code that can be reused for other use cases.</p>
+									<p><strong>Results.</strong> The chatbot is able to answer most questions in 2-5 seconds and, in cases where a video source is retrieved, will return a video frame ready to play from the relevant timestamp. The app has replaced a previous high-cost off-the-shelf chatbot solution that wasn't meeting client expectations.</p>
+									
+									<p><strong>Data concerns.</strong>In early experiments chunking the RAG data, it became clear that off-the-shelf chunking functions result in poor quality because they lose critical context. For example, a video transcript doesn't know it's a video transcript. One paragraph of a large document doesn't know about the rest of the document. It's critical to handle each RAG source individually and with a solid understanding of its structure and content. I built separate preprocessing scripts for each source type to ensure I was capturing the right context each time.</p>
+					
+										
+										
+									</header>									
+									</div>
+								</div>
+							</section>
+
+					</div>
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>					
+						
+
+						
