@@ -70,10 +70,10 @@
 									<p></p>
 
 									<p><strong>Key takeaways. </strong>The most important value-adds were to move away from Langchain, rely on the LLM for many simple requests rather than one long request, use a rephrasing step, use a reranker, use a hallucination-checking step, and write code that can be reused for other use cases.</p>
-									<p><strong>Results.</strong> The chatbot is able to answer most questions in 2-5 seconds and, in cases where a video source is retrieved, will return a video frame ready to play from the relevant timestamp. The app has replaced a previous high-cost off-the-shelf chatbot solution that wasn't meeting client expectations.</p>
-									
-									<p><strong>Data concerns.</strong>In early experiments chunking the RAG data, it became clear that off-the-shelf chunking functions result in poor quality because they lose critical context. For example, a video transcript doesn't know it's a video transcript. One paragraph of a large document doesn't know about the rest of the document. It's critical to handle each RAG source individually and with a solid understanding of its structure and content. I built separate preprocessing scripts for each source type to ensure I was capturing the right context each time.</p>
-					
+				
+									<p><strong>Data concerns.</strong> In early experiments chunking the RAG data, it became clear that off-the-shelf chunking functions result in poor quality because they lose critical context. For example, a video transcript doesn't know it's a video transcript. One paragraph of a large document doesn't know about the rest of the document. It's critical to handle each RAG source individually and with a solid understanding of its structure and content. I built separate preprocessing scripts for each source type to ensure I was capturing the right context each time.</p>
+								    <p><strong>Results.</strong> The chatbot is able to answer most questions in 2-5 seconds and, in cases where a video source is retrieved, will return a video frame ready to play from the relevant timestamp. <u>The app has replaced a previous high-cost off-the-shelf chatbot solution that wasn't meeting client expectations</u>.</p>
+											
 										
 										
 									</header>									
