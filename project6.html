@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>LMMarshall portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+	<!-- Header -->
+			<section id="header">
+				<header>
+				<h1 id="logo"><a href="https://lmmarshall.github.io/portfolio">Morwenna Marshall</a></h1>
+					<p>Project portfolio</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="https://lmmarshall.github.io/portfolio/#one" class="active">About</a></li>
+						<li><a href="https://lmmarshall.github.io/portfolio/#two">Skill Set</a></li>
+						<li><a href="https://lmmarshall.github.io/portfolio/#three">Projects</a></li>
+						<li><a href="https://lmmarshall.github.io/portfolio/#four">Contact</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/morwenna-marshall/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/LMMarshall/" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="mailto:morwennamarshall@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+	
+			<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="images/vectorspace.jpg" alt="" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h3>Detecting outlier pay events</h3>
+										<p> A project involving extensive data transformation with Spark, handling of sparse columns, and data modeling with Scikit-Learn's IsolationForest.</p>
+									</header>
+									<p>To </p>
+
+									<p><strong>Objective.</strong> Detect anomalous (multivariate) pay events to identify possible mistakes or fraud</p> 
+									<p><strong>Approach.</strong> At the outset of this project, I built a pipeline to extract and transform pay-event data. One challenge at this stage was to handle a number of 'sparse'
+									columns -- columns where the value was usually 0 but sometimes non-zero. Without special handling, the rare non-zero events would always be picked up as outliers. I solved this
+ by created an alternative expected value (for non-zero cases); I then applied logic to check if a value was 0 or non-zero before measuring distance from the expected value. 
+<p>Another challenge I faced was that the data included many different currencies and many different scales of payment. So I needed to convert all values to a standard scale before 
+modeling. To do this, I used one column as a normalizer.</p>
+<p>To detect outliers, I first hand-labelled a small subset of cases that I could use for to score my model. I then built several models: a rules-based model, a model that
+looked for extreme percentiles, and Scikit-Learn's Isolation Forest model. I found that none of these models was able to correctly identify all of the outlier cases in my hand-labelled set,
+ but when I combined them, I was able to accurately pick up all of those labelled cases.</p>
+ <p>In addition to flagging outliers, it was important to provide an explanation to the user as to what element (or group of elements) in that pay event most likely caused the anomaly
+ -- for example, "Tax contribution is roughly 5 times higher than expected."
+  For each flagged row, this explainer function uses the rules-based model to explain any rule violations; otherwise it uses the ratio of observed/expected value to explain why the
+  event was likely picked up as anomalous. </p>
+				
+									<p><strong>Data concerns.</strong> The main data concerns in this project were around how to scale all pay events so that they could be 
+									handled by a single model. I had to use a combination of methods to handle scaling -- and calculate meaningful expected values -- 
+									not only across sparse and non-sparse columns, but also across individuals and countries (given that individuals can have different
+									pay scales and different countries can exhibit different pay behaviours).</p>
+								    <p><strong>Results.</strong> The final model is able to reliably identify outlier cases of interest without flagging excessive false positives.
+									</p>
+										
+										
+									</header>									
+									</div>
+								</div>
+							</section>
+
+					</div>
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>					
+						
+
+						
