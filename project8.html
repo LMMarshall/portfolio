@@ -49,21 +49,28 @@
 								<div class="container">
 									<header class="major">
 										<h3>Global model for cost forecasting</h3>
-										<p> Using DARTs time series package to build a 'global' model capable of forecasting costs across many thousands of separate time series.</p>
+										<p> Forecasting costs across thousands of separate time series.</p>
 									</header>
 
-									<p><strong>Objective.</strong> .</p> 
-									<p><strong>Approach.</strong> </p>
+									<p><strong>Objective.</strong> Build a single model capable of accurately forecasting costs using multivariate data across 
+									2000+ separate time series.</p> 
+									<p><strong>Approach:</strong> </p>
 									
-									<ul>
-										 
-									</ul>
+									<ul>PySpark in Azure Databricks for data extraction/transformation pipeline</ul>
+									<ul>Handle gaps in time series</ul>
+									<ul>Handle multiple currencies and countries</ul>
+									<ul>Used DARTS Temporal Fusuion Transformer (TFT) model, which is able to handle multiple time series and allows for probabilistic forecasting</ul>
+	
 									<p></p>
-
-									<p><strong>Key takeaways. </strong></p>
 				
-									<p><strong>Data concerns.</strong> </p>
-								    <p><strong>Results.</strong> </p>
+									<p><strong>Challenges:</strong> 
+									<ul>Extensive data cleaning and reconciliation of conflicting data points (e.g., transactions that replaced earlier transactions; 
+									transactions that supplemented earlier transactions, etc)</ul>
+									</p>
+								    <p><strong>Outcomes:</strong> 
+									<ul>The process of reviewing the data before modeling exposed a number of faulty assumptions in the original mode</ul>
+									<ul>The new TFT model reduces loss by 23% over previous exponential smoothing model (even after the faulty assumptions in the earlier model were corrected for)</ul>
+.</p>
 										
 										
 									</header>									
