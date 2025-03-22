@@ -49,20 +49,27 @@
 								<div class="container">
 									<header class="major">
 										<h3>LLM Summarizer</h3>
-										<p> Using LLM to summarize long, complex legal documents in multiple languages.</p>
+										<p> Using LLM to summarize regulatory documents.</p>
 									</header>
-									<p><strong>Objective.</strong> .</p> 
-									<p><strong>Approach.</strong> </p>
-									
-									<ul>
-										 
-									</ul>
+									<p><strong>Objective.</strong> Provide accurate, useful summaries of long, complex regulatory documents issued by multiple 
+									jurisdictions in multiple languages.</p> 
+									<p><strong>Approach:</strong> </p>
+									<ul>Built in Python in Azure Databricks
+									<ul>These documents were non-uniform -- different layouts, lengths, and features</ul>
+									<ul>Extracted main text, ignoring headers, footers, logos, and other extraneous features</ul>
+									<ul>Used custom chunking approach to retain overall context of document while chunking</ul>
+									<ul>Prompt engineering to ensure most relevant details were captured and output was highly readable</ul>
+									<ul>Tested and adapted to work across multiple languages, including languages with non-Latin scripts</ul>
+									<ul>First iteration used GPT-3.5 with a 4k context window; later upgraded to o1-mini, achieving even stronger results</ul>
+									<ul>Interviews with stakeholders to ensure I was targeting the right sources</ul>
+									<ul>Deployed in PoC environment for stakeholder testing</ul>
+									<ul>Put together a group of early test users and maintained regular contact with them throughout testing, integrating
+									multiple points of feedback (e.g., adding/deleted certain sources, extracting keywords, overcoming inaccuracies in some languages, etc)
+									into the approach</ul>
 									<p></p>
 
-									<p><strong>Key takeaways. </strong></p>
-				
-									<p><strong>Data concerns.</strong> </p>
-								    <p><strong>Results.</strong> </p>
+								    <p><strong>Results.</strong> Stakeholders are highly satisfied, reporting significant time savings. 
+									The solution is currently being extended to cover even more jurisdictions and languages.</p>
 										
 										
 									</header>									
