@@ -53,26 +53,27 @@
 									</header>
 
 									<p><strong>Objective.</strong> Build a model capable of accurately forecasting costs using multivariate data across 
-									2000+ separate time series. Specifically, this model was intended to replace an existing exponential smoothing model that performed poorly.</p> 
+									2000+ time series. Specifically, this model was intended to replace an existing exponential smoothing model that performed poorly.</p> 
 									<p><strong>Approach:</strong>
-									<ul><li>PySpark in Azure Databricks for data extraction/transformation pipeline</li>
-									<li>Handle gaps in time series</li>
-									<li>Handle multiple currencies and countries</li>
-									<li>Used DARTS Temporal Fusion Transformer (TFT) model, which is able to handle multiple 
-									time series and allows for probabilistic forecasting</li>
+									<ul><li>Interviewed stakeholders to understand logic for reconciling duplicate and supplemental pay events</li>
+									<li>Built data extraction/transformation pipeline with PySpark in Azure Databricks</li>
+									<li>Applied conditional filtering on data during ETL process for data privacy</li>
+									<li>Handled currency conversions across multiple countries</li>
+									<li>Used DARTS Temporal Fusion Transformer (TFT) to build a forecasting model</li>
+									<li>Compared TFT results to existing exponential smoothing results and a naive baseline model and tested for significance
 									</ul></p>
 				
 									<p><strong>Challenges:</strong> 
 									<ul><li>Extensive data cleaning and reconciliation of conflicting data points (e.g., transactions that replaced earlier transactions; 
-									transactions that supplemented earlier transactions, etc)</li>
+									transactions that supplemented earlier transactions, etc) as well as different pay freqencies across time series</li>
 									</ul>
 									</p>
 								    <p><strong>Outcomes:</strong> 
-									<ul><li>The process of reviewing the data before modeling exposed a number of faulty assumptions in the original model</li>
-									<li>The new TFT model reduces loss by 23% over previous exponential smoothing model (even after the faulty assumptions in the earlier model were corrected for)</li>
+									<ul><li>In my review and exploration of the data before modeling, I uncovered a number of faulty assumptions in the original exponential smoothing model.
+									This finding alone was a significant win, since it exposed errors that were then correctable </li>
+									<li>The new TFT model reduced loss by 23% over the exponential smoothing model (even after the faulty assumptions in the earlier model had been corrected for)</li>
 									</ul>
 .</p>
-										
 										
 									</header>									
 									</div>
