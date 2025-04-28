@@ -52,12 +52,10 @@
 										<p> Forecasting costs across thousands of separate time series.</p>
 									</header>
 
-									<p><strong>Objective.</strong> Build a single model capable of accurately forecasting costs using multivariate data across 
-									2000+ separate time series.</p> 
+									<p><strong>Objective.</strong> Build a model capable of accurately forecasting costs using multivariate data across 
+									2000+ separate time series. Specifically, this model was intended to replace an existing exponential smoothing model that performed poorly.</p> 
 									<p><strong>Approach:</strong>
-									
-									<ul>
-									<li>PySpark in Azure Databricks for data extraction/transformation pipeline</li>
+									<ul><li>PySpark in Azure Databricks for data extraction/transformation pipeline</li>
 									<li>Handle gaps in time series</li>
 									<li>Handle multiple currencies and countries</li>
 									<li>Used DARTS Temporal Fusuion Transformer (TFT) model, which is able to handle multiple 
@@ -65,14 +63,12 @@
 									</ul></p>
 				
 									<p><strong>Challenges:</strong> 
-									<ul>
-									<li>Extensive data cleaning and reconciliation of conflicting data points (e.g., transactions that replaced earlier transactions; 
+									<ul><li>Extensive data cleaning and reconciliation of conflicting data points (e.g., transactions that replaced earlier transactions; 
 									transactions that supplemented earlier transactions, etc)</li>
 									</ul>
 									</p>
 								    <p><strong>Outcomes:</strong> 
-									<ul>
-									<li>The process of reviewing the data before modeling exposed a number of faulty assumptions in the original model</li>
+									<ul><li>The process of reviewing the data before modeling exposed a number of faulty assumptions in the original model</li>
 									<li>The new TFT model reduces loss by 23% over previous exponential smoothing model (even after the faulty assumptions in the earlier model were corrected for)</li>
 									</ul>
 .</p>
